@@ -168,7 +168,8 @@ class Connector:
         itable = self.impdb.tables[table]
 
         max_count = self.impdb.config["request"]["paganition"]["max_count"]
-        df = []
+        df = pd.DataFrame()
+        last_id = 0
 
         pag_type = self.impdb.config["request"]["paganition"]["type"]
 
@@ -190,9 +191,14 @@ class Connector:
                         where["returned_number"] = remain
                     else:
                         where["returned_number"] = max_count
-                if pag_type == "cursor" and i > 0:
-                    where[self.impdb.config["request"]["paganition"]["cursor_key"]] = (
-                        last_id - 1
+                if pag_type == "cursor":
+                    where.update(
+                        {
+                            self.impdb.config["request"]["paganition"][
+                                "cursor_key"
+                            ]: last_id
+                            - 1
+                        }
                     )
                 if pag_type == "limit":
                     where[self.impdb.config["request"]["paganition"]["anchor_key"]] = (
