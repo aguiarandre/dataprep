@@ -1,0 +1,53 @@
+{
+    "version": 1,
+    "request": {
+        "url": "https://dblp.org/search/publ/api",
+        "method": "GET",
+        "params": {
+            "q": true,
+            "h": false,
+            "f": false
+        },
+        "paganition":{
+            "type":"limit",
+            "anchor_key":"f",
+            "count_key":"h",
+            "max_count":1000
+        }
+    },
+    "response": {
+        "ctype": "application/xml",
+        "tablePath": "/result/hits/*",
+        "schema": {
+            "authors": {
+                "target": "info/authors/*/text()",
+                "type": "object"
+            },
+            "title": {
+                "target": "info/title/text()",
+                "type": "string"
+            },
+            "venue": {
+                "target": "info/venue/text()",
+                "type": "object"
+            },
+            "pages": {
+                "target": "info/pages/text()",
+                "type": "string"
+            },
+            "publish year": {
+                "target": "info/year/text()",
+                "type": "string"
+            },
+            "publication type": {
+                "target": "info/type/text()",
+                "type": "string"
+            },
+            "publication url": {
+                "target": "info/url/text()",
+                "type": "string"
+            }
+        },
+        "orient": "records"
+    }
+}

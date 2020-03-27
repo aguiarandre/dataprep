@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "request": {
+        "url": "https://api.spotify.com/v1/search?type=track",
+        "method": "GET",
+        "authorization": {
+            "type": "OAuth2",
+            "grantType": "ClientCredentials",
+            "tokenServerUrl": "https://accounts.spotify.com/api/token"
+        },
+        "params": {
+            "q": true,
+            "limit": false,
+            "offset": false
+        },
+        "paganition":{
+            "type":"limit",
+            "anchor_key":"offset",
+            "count_key":"limit",
+            "max_count": 50
+        }
+    },
+    "response": {
+        "ctype": "application/json",
+        "tablePath": "$.tracks.items[*]",
+        "schema": {
+            "name": {
+                "target": "$.name",
+                "type": "string"
+            },
+            "album": {
+                "target": "$.album.name",
+                "type": "string"
+            },
+            "artists":{
+                "target": "$.artists[0].name",
+                "type": "string"
+            },
+            "available_markets":{
+                "target": "$.available_markets",
+                "type": "string"
+            },
+            "duration_ms":{
+                "target": "$.duration_ms",
+                "type": "int"
+            }
+        },
+        "orient": "records"
+    }
+}
