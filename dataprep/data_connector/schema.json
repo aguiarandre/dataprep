@@ -8,7 +8,7 @@
         "request",
         "response"
     ],
-    "additionalProperties": true,
+    "additionalProperties": false,
     "properties": {
         "version": {
             "$id": "#/properties/version",
@@ -61,6 +61,9 @@
                 "params": {
                     "$ref": "#/definitions/fields"
                 },
+                "paganition": {
+                    "$ref": "#/definitions/fields"
+                },
                 "body": {
                     "$id": "#/properties/request/properties/body",
                     "type": "object",
@@ -85,7 +88,7 @@
                     "$ref": "#/definitions/fields"
                 }
             },
-            "additionalProperties": true
+            "additionalProperties": false
         },
         "response": {
             "$id": "#/properties/response",
@@ -128,9 +131,9 @@
                     ]
                 }
             },
-            "additionalProperties": true
+            "additionalProperties": false
         },
-        "additionalProperties": true
+        "additionalProperties": false
     },
     "definitions": {
         "fields": {
@@ -144,6 +147,9 @@
                     },
                     {
                         "type": "boolean"
+                    },
+                    {
+                        "type": "integer"
                     },
                     {
                         "type": "object",
@@ -169,7 +175,7 @@
                                 "type": "boolean",
                                 "default": false
                             },
-                            "additionalProperties": true
+                            "additionalProperties": false
                         }
                     }
                 ]
@@ -203,7 +209,7 @@
                             "type": "string"
                         }
                     },
-                    "additionalProperties": true
+                    "additionalProperties": false
                 },
                 {
                     "type": "string",
@@ -242,7 +248,7 @@
                     "target",
                     "type"
                 ],
-                "additionalProperties": true
+                "additionalProperties": false
             }
         }
     }

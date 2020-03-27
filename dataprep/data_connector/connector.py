@@ -77,7 +77,6 @@ class Connector:
             ensure_config(config_path)
             path = config_directory() / config_path
             self.impdb = ImplicitDatabase(path)
-        # print(self.impdb.tables)
 
         self.vars = kwargs
         self.auth_params = auth_params or {}

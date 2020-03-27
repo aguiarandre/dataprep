@@ -68,8 +68,6 @@ class ImplicitTable:  # pylint: disable=too-many-instance-attributes
         self.name = name
         self.config = config
         request_def = config["request"]
-        if config["request"]["paganition"]["type"] == "limit":
-            count_key = config["request"]["paganition"]["count_key"]
 
         self.method = request_def["method"]
         self.url = request_def["url"]
@@ -88,7 +86,6 @@ class ImplicitTable:  # pylint: disable=too-many-instance-attributes
 
         for key in ["headers", "params", "cookies"]:
             if key in request_def:
-
                 setattr(self, key, Fields(request_def[key]))
         if "body" in request_def:
             body_def = request_def["body"]
@@ -215,6 +212,7 @@ class ImplicitDatabase:
 
     name: str
     tables: Dict[str, ImplicitTable]
+    config: Dict[str, Any]
 
     def __init__(self, config_path: Union[str, Path]) -> None:
         path = Path(config_path)
