@@ -1,7 +1,4 @@
 """
-plot(df)
-========
-
 This module implements the plot(df) function.
 """
 
@@ -10,11 +7,12 @@ from typing import Optional, Tuple, Union
 import dask.dataframe as dd
 import pandas as pd
 from bokeh.io import show
-from bokeh.plotting import Figure
 
 from .compute import compute
 from .render import render
 from ..report import Report
+
+__all__ = ["plot", "compute", "render"]
 
 
 def plot(
@@ -31,7 +29,7 @@ def plot(
     value_range: Optional[Tuple[float, float]] = None,
     yscale: str = "linear",
     tile_size: Optional[float] = None,
-) -> Figure:
+) -> Report:
     """Generates plots for exploratory data analysis.
 
     If x and y are unspecified, the distribution of
@@ -56,45 +54,39 @@ def plot(
 
     Parameters
     ----------
-    df : Union[pd.DataFrame, dd.DataFrame]
+    df
         Dataframe from which plots are to be generated
-    x : str, optional, default None
+    x
         A valid column name from the dataframe.
-    y : str, optional, default None
+    y
         A valid column name from the dataframe.
-    bins : int, default 10
+    bins
         For a histogram or box plot with numerical x axis, it defines
         the number of equal-width bins to use when grouping.
-    ngroups : int, default 10
+    ngroups
         When grouping over a categorical column, it defines the
         number of groups to show in the plot. Ie, the number of
         bars to show in a bar chart.
-    largest : bool, default True
+    largest
         If true, when grouping over a categorical column, the groups
         with the largest count will be output. If false, the groups
         with the smallest count will be output.
-    nsubgroups : int
+    nsubgroups
         If x and y are categorical columns, ngroups refers to
         how many groups to show from column x, and nsubgroups refers to
         how many subgroups to show from column y in each group in column x.
-    bandwidth : float, default 1.5
+    bandwidth
         Bandwidth for the kernel density estimation.
-    sample_size : int, default 1000
+    sample_size
         Sample size for the scatter plot.
-    value_range : (float, float), optional, default None
+    value_range
         The lower and upper bounds on the range of a numerical column.
         Applies when column x is specified and column y is unspecified.
-    yscale: str, default "linear"
+    yscale
         The scale to show on the y axis. Can be "linear" or "log".
-    tile_size : Optional[float] = None
+    tile_size
         Size of the tile for the hexbin plot. Measured from the middle
         of a hexagon to its left or right corner.
-
-    Returns
-    -------
-    An object of figure or
-        An object of figure and
-        An intermediate representation for the plots of different columns in the data_frame.
 
     Examples
     --------

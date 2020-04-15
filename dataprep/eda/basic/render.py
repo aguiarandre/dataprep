@@ -1,7 +1,4 @@
 """
-Render ``plot(df)``
-===================
-
 This module implements the visualization for the plot(df) function.
 """  # pylint: disable=too-many-lines
 from math import pi
@@ -1005,28 +1002,25 @@ def render(
 
     Parameters
     ----------
-    itmdt : Intermediate
+    itmdt
         The Intermediate containing results from the compute function.
-    yscale: str = "linear"
+    yscale
         The scale to show on the y axis. Can be "linear" or "log".
-    tile_size : Optional[float] = None
+    tile_size
         Size of the tile for the hexbin plot. Measured from the middle
         of a hexagon to its left or right corner.
-    plot_width_small : int = 324,
+    plot_width_small: int, default 324
         The width of the small plots
-    plot_height_small: int = 300,
+    plot_height_small: int, default 300
         The height of the small plots
-    plot_width_large : int = 450,
+    plot_width_large: int, default 450
         The width of the large plots
-    plot_height_large: int = 400,
+    plot_height_large: int, default 400
         The height of the large plots
-    plot_width_large : int = 972,
+    plot_width_large: int, default 972
+        The width of the large plots
+    plot_width_wide: int, default 972
         The width of the wide plots
-
-    Returns
-    -------
-    LayoutDOM
-        A bokeh layout domain.
     """
     # pylint: disable=too-many-arguments
     if itmdt.visual_type == "basic_grid":

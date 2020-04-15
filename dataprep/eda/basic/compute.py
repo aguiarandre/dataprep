@@ -1,7 +1,4 @@
 """
-Compute ``plot(df)``
-====================
-
 This module implements the intermediates computation for plot(df) function.
 """
 from sys import stderr
@@ -38,38 +35,34 @@ def compute(
     """
     Parameters
     ----------
-    df : Union[pd.DataFrame, dd.DataFrame]
+    df
         Dataframe from which plots are to be generated.
-    x : str, optional, default None
+    x
         A valid column name from the dataframe.
-    y : str, optional, default None
+    y
         A valid column name from the dataframe.
-    bins : int, default 10
+    bins: int, default 10
         For a histogram or box plot with numerical x axis, it defines
         the number of equal-width bins to use when grouping.
-    ngroups : int, default 10
+    ngroups: int, default 10
         When grouping over a categorical column, it defines the
         number of groups to show in the plot. Ie, the number of
         bars to show in a bar chart.
-    largest : bool, default True
+    largest: bool, default True
         If true, when grouping over a categorical column, the groups
         with the largest count will be output. If false, the groups
         with the smallest count will be output.
-    nsubgroups : int
+    nsubgroups
         If x and y are categorical columns, ngroups refers to
         how many groups to show from column x, and nsubgroups refers to
         how many subgroups to show from column y in each group in column x.
-    bandwidth : float, default 1.5
+    bandwidth: float, default 1.5
         Bandwidth for the kernel density estimation.
-    sample_size : int, default 1000
+    sample_size: int, default 1000
         Sample size for the scatter plot.
-    value_range : (float, float), optional, default None
+    value_range
         The lower and upper bounds on the range of a numerical column.
         Applies when column x is specified and column y is unspecified.
-
-    Returns
-    -------
-    Intermediate
     """
     # pylint: disable=too-many-arguments,too-many-locals,too-many-branches,too-many-return-statements,too-many-statements
     # pylint: disable=no-else-return
